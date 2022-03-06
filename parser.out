@@ -1,0 +1,364 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> entrada
+Rule 1     entrada -> expresion
+Rule 2     expresion -> LARROW VAR TYPE EQUAL QUOTE DATATYPE QUOTE NAME EQUAL QUOTE IDENT QUOTE RARROW CONTENT LARROW SLASH VAR RARROW
+Rule 3     expresion -> LARROW INPUT ASSIGN EQUAL QUOTE IDENT QUOTE RARROW
+Rule 4     expresion -> LARROW PRINT RARROW CONTENT LARROW SLASH PRINT RARROW
+Rule 5     expresion -> LARROW PRINT RARROW print-v LARROW SLASH PRINT RARROW
+Rule 6     print-v -> DOLLAR LBRACE IDENT RBRACE
+
+Terminals, with rules where they appear
+
+ASSIGN               : 3
+CONTENT              : 2 4
+DATATYPE             : 2
+DOLLAR               : 6
+EQUAL                : 2 2 3
+IDENT                : 2 3 6
+INPUT                : 3
+LARROW               : 2 2 3 4 4 5 5
+LBRACE               : 6
+NAME                 : 2
+PRINT                : 4 4 5 5
+QUOTE                : 2 2 2 2 3 3
+RARROW               : 2 2 3 4 4 5 5
+RBRACE               : 6
+SLASH                : 2 4 5
+TYPE                 : 2
+VAR                  : 2 2
+error                : 
+
+Nonterminals, with rules where they appear
+
+entrada              : 0
+expresion            : 1
+print-v              : 5
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . entrada
+    (1) entrada -> . expresion
+    (2) expresion -> . LARROW VAR TYPE EQUAL QUOTE DATATYPE QUOTE NAME EQUAL QUOTE IDENT QUOTE RARROW CONTENT LARROW SLASH VAR RARROW
+    (3) expresion -> . LARROW INPUT ASSIGN EQUAL QUOTE IDENT QUOTE RARROW
+    (4) expresion -> . LARROW PRINT RARROW CONTENT LARROW SLASH PRINT RARROW
+    (5) expresion -> . LARROW PRINT RARROW print-v LARROW SLASH PRINT RARROW
+
+    LARROW          shift and go to state 3
+
+    entrada                        shift and go to state 1
+    expresion                      shift and go to state 2
+
+state 1
+
+    (0) S' -> entrada .
+
+
+
+state 2
+
+    (1) entrada -> expresion .
+
+    $end            reduce using rule 1 (entrada -> expresion .)
+
+
+state 3
+
+    (2) expresion -> LARROW . VAR TYPE EQUAL QUOTE DATATYPE QUOTE NAME EQUAL QUOTE IDENT QUOTE RARROW CONTENT LARROW SLASH VAR RARROW
+    (3) expresion -> LARROW . INPUT ASSIGN EQUAL QUOTE IDENT QUOTE RARROW
+    (4) expresion -> LARROW . PRINT RARROW CONTENT LARROW SLASH PRINT RARROW
+    (5) expresion -> LARROW . PRINT RARROW print-v LARROW SLASH PRINT RARROW
+
+    VAR             shift and go to state 4
+    INPUT           shift and go to state 5
+    PRINT           shift and go to state 6
+
+
+state 4
+
+    (2) expresion -> LARROW VAR . TYPE EQUAL QUOTE DATATYPE QUOTE NAME EQUAL QUOTE IDENT QUOTE RARROW CONTENT LARROW SLASH VAR RARROW
+
+    TYPE            shift and go to state 7
+
+
+state 5
+
+    (3) expresion -> LARROW INPUT . ASSIGN EQUAL QUOTE IDENT QUOTE RARROW
+
+    ASSIGN          shift and go to state 8
+
+
+state 6
+
+    (4) expresion -> LARROW PRINT . RARROW CONTENT LARROW SLASH PRINT RARROW
+    (5) expresion -> LARROW PRINT . RARROW print-v LARROW SLASH PRINT RARROW
+
+    RARROW          shift and go to state 9
+
+
+state 7
+
+    (2) expresion -> LARROW VAR TYPE . EQUAL QUOTE DATATYPE QUOTE NAME EQUAL QUOTE IDENT QUOTE RARROW CONTENT LARROW SLASH VAR RARROW
+
+    EQUAL           shift and go to state 10
+
+
+state 8
+
+    (3) expresion -> LARROW INPUT ASSIGN . EQUAL QUOTE IDENT QUOTE RARROW
+
+    EQUAL           shift and go to state 11
+
+
+state 9
+
+    (4) expresion -> LARROW PRINT RARROW . CONTENT LARROW SLASH PRINT RARROW
+    (5) expresion -> LARROW PRINT RARROW . print-v LARROW SLASH PRINT RARROW
+    (6) print-v -> . DOLLAR LBRACE IDENT RBRACE
+
+    CONTENT         shift and go to state 12
+    DOLLAR          shift and go to state 14
+
+    print-v                        shift and go to state 13
+
+state 10
+
+    (2) expresion -> LARROW VAR TYPE EQUAL . QUOTE DATATYPE QUOTE NAME EQUAL QUOTE IDENT QUOTE RARROW CONTENT LARROW SLASH VAR RARROW
+
+    QUOTE           shift and go to state 15
+
+
+state 11
+
+    (3) expresion -> LARROW INPUT ASSIGN EQUAL . QUOTE IDENT QUOTE RARROW
+
+    QUOTE           shift and go to state 16
+
+
+state 12
+
+    (4) expresion -> LARROW PRINT RARROW CONTENT . LARROW SLASH PRINT RARROW
+
+    LARROW          shift and go to state 17
+
+
+state 13
+
+    (5) expresion -> LARROW PRINT RARROW print-v . LARROW SLASH PRINT RARROW
+
+    LARROW          shift and go to state 18
+
+
+state 14
+
+    (6) print-v -> DOLLAR . LBRACE IDENT RBRACE
+
+    LBRACE          shift and go to state 19
+
+
+state 15
+
+    (2) expresion -> LARROW VAR TYPE EQUAL QUOTE . DATATYPE QUOTE NAME EQUAL QUOTE IDENT QUOTE RARROW CONTENT LARROW SLASH VAR RARROW
+
+    DATATYPE        shift and go to state 20
+
+
+state 16
+
+    (3) expresion -> LARROW INPUT ASSIGN EQUAL QUOTE . IDENT QUOTE RARROW
+
+    IDENT           shift and go to state 21
+
+
+state 17
+
+    (4) expresion -> LARROW PRINT RARROW CONTENT LARROW . SLASH PRINT RARROW
+
+    SLASH           shift and go to state 22
+
+
+state 18
+
+    (5) expresion -> LARROW PRINT RARROW print-v LARROW . SLASH PRINT RARROW
+
+    SLASH           shift and go to state 23
+
+
+state 19
+
+    (6) print-v -> DOLLAR LBRACE . IDENT RBRACE
+
+    IDENT           shift and go to state 24
+
+
+state 20
+
+    (2) expresion -> LARROW VAR TYPE EQUAL QUOTE DATATYPE . QUOTE NAME EQUAL QUOTE IDENT QUOTE RARROW CONTENT LARROW SLASH VAR RARROW
+
+    QUOTE           shift and go to state 25
+
+
+state 21
+
+    (3) expresion -> LARROW INPUT ASSIGN EQUAL QUOTE IDENT . QUOTE RARROW
+
+    QUOTE           shift and go to state 26
+
+
+state 22
+
+    (4) expresion -> LARROW PRINT RARROW CONTENT LARROW SLASH . PRINT RARROW
+
+    PRINT           shift and go to state 27
+
+
+state 23
+
+    (5) expresion -> LARROW PRINT RARROW print-v LARROW SLASH . PRINT RARROW
+
+    PRINT           shift and go to state 28
+
+
+state 24
+
+    (6) print-v -> DOLLAR LBRACE IDENT . RBRACE
+
+    RBRACE          shift and go to state 29
+
+
+state 25
+
+    (2) expresion -> LARROW VAR TYPE EQUAL QUOTE DATATYPE QUOTE . NAME EQUAL QUOTE IDENT QUOTE RARROW CONTENT LARROW SLASH VAR RARROW
+
+    NAME            shift and go to state 30
+
+
+state 26
+
+    (3) expresion -> LARROW INPUT ASSIGN EQUAL QUOTE IDENT QUOTE . RARROW
+
+    RARROW          shift and go to state 31
+
+
+state 27
+
+    (4) expresion -> LARROW PRINT RARROW CONTENT LARROW SLASH PRINT . RARROW
+
+    RARROW          shift and go to state 32
+
+
+state 28
+
+    (5) expresion -> LARROW PRINT RARROW print-v LARROW SLASH PRINT . RARROW
+
+    RARROW          shift and go to state 33
+
+
+state 29
+
+    (6) print-v -> DOLLAR LBRACE IDENT RBRACE .
+
+    LARROW          reduce using rule 6 (print-v -> DOLLAR LBRACE IDENT RBRACE .)
+
+
+state 30
+
+    (2) expresion -> LARROW VAR TYPE EQUAL QUOTE DATATYPE QUOTE NAME . EQUAL QUOTE IDENT QUOTE RARROW CONTENT LARROW SLASH VAR RARROW
+
+    EQUAL           shift and go to state 34
+
+
+state 31
+
+    (3) expresion -> LARROW INPUT ASSIGN EQUAL QUOTE IDENT QUOTE RARROW .
+
+    $end            reduce using rule 3 (expresion -> LARROW INPUT ASSIGN EQUAL QUOTE IDENT QUOTE RARROW .)
+
+
+state 32
+
+    (4) expresion -> LARROW PRINT RARROW CONTENT LARROW SLASH PRINT RARROW .
+
+    $end            reduce using rule 4 (expresion -> LARROW PRINT RARROW CONTENT LARROW SLASH PRINT RARROW .)
+
+
+state 33
+
+    (5) expresion -> LARROW PRINT RARROW print-v LARROW SLASH PRINT RARROW .
+
+    $end            reduce using rule 5 (expresion -> LARROW PRINT RARROW print-v LARROW SLASH PRINT RARROW .)
+
+
+state 34
+
+    (2) expresion -> LARROW VAR TYPE EQUAL QUOTE DATATYPE QUOTE NAME EQUAL . QUOTE IDENT QUOTE RARROW CONTENT LARROW SLASH VAR RARROW
+
+    QUOTE           shift and go to state 35
+
+
+state 35
+
+    (2) expresion -> LARROW VAR TYPE EQUAL QUOTE DATATYPE QUOTE NAME EQUAL QUOTE . IDENT QUOTE RARROW CONTENT LARROW SLASH VAR RARROW
+
+    IDENT           shift and go to state 36
+
+
+state 36
+
+    (2) expresion -> LARROW VAR TYPE EQUAL QUOTE DATATYPE QUOTE NAME EQUAL QUOTE IDENT . QUOTE RARROW CONTENT LARROW SLASH VAR RARROW
+
+    QUOTE           shift and go to state 37
+
+
+state 37
+
+    (2) expresion -> LARROW VAR TYPE EQUAL QUOTE DATATYPE QUOTE NAME EQUAL QUOTE IDENT QUOTE . RARROW CONTENT LARROW SLASH VAR RARROW
+
+    RARROW          shift and go to state 38
+
+
+state 38
+
+    (2) expresion -> LARROW VAR TYPE EQUAL QUOTE DATATYPE QUOTE NAME EQUAL QUOTE IDENT QUOTE RARROW . CONTENT LARROW SLASH VAR RARROW
+
+    CONTENT         shift and go to state 39
+
+
+state 39
+
+    (2) expresion -> LARROW VAR TYPE EQUAL QUOTE DATATYPE QUOTE NAME EQUAL QUOTE IDENT QUOTE RARROW CONTENT . LARROW SLASH VAR RARROW
+
+    LARROW          shift and go to state 40
+
+
+state 40
+
+    (2) expresion -> LARROW VAR TYPE EQUAL QUOTE DATATYPE QUOTE NAME EQUAL QUOTE IDENT QUOTE RARROW CONTENT LARROW . SLASH VAR RARROW
+
+    SLASH           shift and go to state 41
+
+
+state 41
+
+    (2) expresion -> LARROW VAR TYPE EQUAL QUOTE DATATYPE QUOTE NAME EQUAL QUOTE IDENT QUOTE RARROW CONTENT LARROW SLASH . VAR RARROW
+
+    VAR             shift and go to state 42
+
+
+state 42
+
+    (2) expresion -> LARROW VAR TYPE EQUAL QUOTE DATATYPE QUOTE NAME EQUAL QUOTE IDENT QUOTE RARROW CONTENT LARROW SLASH VAR . RARROW
+
+    RARROW          shift and go to state 43
+
+
+state 43
+
+    (2) expresion -> LARROW VAR TYPE EQUAL QUOTE DATATYPE QUOTE NAME EQUAL QUOTE IDENT QUOTE RARROW CONTENT LARROW SLASH VAR RARROW .
+
+    $end            reduce using rule 2 (expresion -> LARROW VAR TYPE EQUAL QUOTE DATATYPE QUOTE NAME EQUAL QUOTE IDENT QUOTE RARROW CONTENT LARROW SLASH VAR RARROW .)
+
