@@ -1,12 +1,12 @@
 <HTPL>
 
-<var type="integer“ name="my_int">  25 </var>
-<var type=“boolean“ name="my_bool">  True </var>
-<var type=“string “ name="my_string">  Mi Nombre </var>
+<var type="integer" name="my_int">  25 </var>
+<var type="boolean" name="my_bool">  True </var>
+<var type="string " name="my_string">  Mi Nombre </var>
 
 <print> Me llamo ${my_string} y tengo ${my_int} años. </print>
-<var type=“string” name=“my_input> </var> 
+<var type="string” name="my_input> </var> 
 <print> ¿Cómo te llamas? </print>
-<input assign=“my_input”>
+<input assign="my_input">
 
 </HTPL>
