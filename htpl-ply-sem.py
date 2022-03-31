@@ -171,10 +171,15 @@ def print_things(entry):
     sentence = ' '.join(sentence)
     vars_to_print = regex.findall(r'(?<=\$\{)\w+(?=\})',sentence)
     for variable in vars_to_print:
-        temp_var = variables.get(variable).get('valor')
-        variable = '${' + variable + '}'
-        sentence = sentence.replace(variable,str(temp_var))
-    print(sentence)
+        try:
+            temp_var = variables.get(variable).get('valor')
+            variable = '${' + variable + '}'
+            sentence = sentence.replace(variable,str(temp_var))
+        except:
+            print(f'Variable {variable} no está declarada')
+            ERROR = True
+    if not ERROR:
+        print(sentence)
 parser = yacc.yacc()
 
 def execute_lexer_and_parser(entrada):
